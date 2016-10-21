@@ -1,8 +1,6 @@
 # Andela-Pair-Programming
 Andela Pair Programming Bootcamp project
 
-What is APp?
-
 Andela Pair Programming is a bootcamp application that was developed to help Andelans code together collaboratively.
 
 It attempts to implement the features listed below
