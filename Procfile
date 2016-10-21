@@ -1,1 +1,1 @@
-python run.py
+sudo python run.py
