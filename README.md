@@ -23,7 +23,7 @@ A user should be able to write code within the editor
 
 # Chats
 
-A user should be able to chat with other users on the session
+A user should be able to chat with other users on the session (This feature is still under development)
 
 # To install the app
 clone this repository https://github.com/rootatandela/Andela-Pair-Programming
