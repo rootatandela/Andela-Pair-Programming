@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Python Flask Bucket List App</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ 
+    <script src="../static/js/jquery-1.11.2.js"></script>
+ 
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="#">Add Session</a>
+                    </li>
+                    <li role="presentation"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">
+                    <a href="/userHome"><img src="../static/images/project_logo_28.png" alt="APp"></a>
+                    Andela Pair Programming Application
+            </h3>
+        </div>
+        <section>
+            <form class="form-horizontal" method="post" action="/addSession">
+                <fieldset>
+ 
+                    <!-- Form Name -->
+                    <legend>New Programming Session</legend>
+                    
+                    <div style="text-align:center; padding-bottom:10px">
+                      {% if error == "Please enter all input fields" %}
+                          <span style="color: orange; font-weight:bold; font-size:28px">Please enter all input fields<span>
+                      {% endif %}
+                  </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtSessionName">Session Name</label>
+                        <div class="col-md-4">
+                            <input id="txtSessionName" name="inputSessionName" type="text" placeholder="New Session" class="form-control input-md">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtTitle">Programming Language</label>
+                        <div class="col-md-4">
+                            <input id="txtLanguage" name="inputSessionLanguage" type="text" placeholder="Programming Language" class="form-control input-md">
+                        </div>
+                    </div>
+ 
+                    <!-- Textarea -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="txtPost">Description</label>
+                        <div class="col-md-4">
+                            <textarea class="form-control" id="txtDescription" name="inputSessionDescription"></textarea>
+                        </div>
+                    </div>
+ 
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="singlebutton"></label>
+                        <div class="col-md-4">
+                            <input id="createSession" name="createSession" class="btn btn-primary" type="submit" value="Create" />
+                            <a href="/userHome"><input id="cancelSession" name="cancelSession" class="btn btn-primary" type="button" value="Cancel"/></a>
+                        </div>
+                    </div>
+ 
+                </fieldset>
+            </form>
+ 
+        </section>
+        <footer class="footer">
+            <p>root@localhost</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

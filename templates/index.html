@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>APp Home</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link href="../static/signup.css" rel="stylesheet">
+ 
+ 
+</head>
+ 
+<body>
+    <div class="container" style="padding-top:10px">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation"><a href="showSignIn">Sign In</a>
+                    </li>
+                    <li role="presentation"><a href="showSignUp">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">
+                    <a href="/"><img src="../static/images/project_logo_28.png" alt="APp"></a>
+            </h3>
+        </div>
+         <div style="text-align:center; padding-bottom:10px">
+              {% if error == "Please signin To continue" %}
+                  <span style="color: orange; font-weight:bold; font-size:28px">Please signin To continue<span>
+              {% endif %}
+          </div>
+        <div class="jumbotron" style="background-image: url("images/pair_programming.jpg");">
+            <h2>Andela Pair Programming</h2>
+            <p class="lead"></p>
+            <p>
+                {% if error == "Please signin To continue" %}
+                    <a class="btn btn-lg btn-success" href="/showSignIn" role="button">Sign In</a>
+                {% else %}
+                    <a class="btn btn-lg btn-success" href="/userHome" role="button">Continue</a>
+                {% endif %}
+            </p>
+        </div>
+ 
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4><strong>What is APp?</strong></h4>
+                <p>Andela Pair Programming is a bootcamp application that was developed to help Andelans code together collaboratively.</p>
+
+                <p>It attempts to implement the features listed below</p>
+ 
+                <h4>User Accounts Management</h4>
+                <p>A user should be able to signup, login, and logout</p>
+ 
+                <h4>Programming Sessions Management</h4>
+                <p>A user should be able to create, edit, and delete a pair programming session</p>
+            </div>
+ 
+            <div class="col-lg-6">
+                <h4>Session Invites</h4>
+                <p>A user should be able to invite other users of the application to his/her created Programming Session</p>
+ 
+                <h4>Write Code</h4>
+                <p>A user should be able to write code within the editor</p>
+ 
+                <h4>Chats</h4>
+                <p>A user should be able to chat with other users on the session</p>
+            </div>
+        </div>
+ 
+        <footer class="footer">
+            <p>root@localhost</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

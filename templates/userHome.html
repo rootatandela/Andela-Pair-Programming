@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>APp - Home</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="../static/css/signup.css" rel="stylesheet">
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class=""><a href="">{{ session['user_name'] }}</a>
+                    <li role="presentation" class="active"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">
+                    <a href="/userHome"><img src="../static/images/project_logo_28.png" alt="APp"></a>
+                    Andela Pair Programming Application
+            </h3>
+        </div>
+        
+        <div id="welcome-div" class="jumbotron" style="background-image: url('../static/images/welcome.gifx'); height:; background-size:cover;">
+            <h1 style="color: yellow;">
+                <img src="../static/images/andela-logo.png" width="20%">
+            </h1>
+        </div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes style="text-align:center">
+            {% for message in messages %}
+              <span style="color: orange; font-weight:bold; font-size:24px">{{ message }}<span>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        <div style="text-align: center; padding-bottom:10px">
+            <a class="btn  btn-success" href="/userHome" role="button">My Sessions</a>
+            <a class="btn  btn-success" href="/showAddSession" role="button">New Session</a>
+            <a class="btn  btn-success" href="/showInvites" role="button">Invited Sessions</a>
+        </div>
+        {% if programmingSessions %}
+            <h3 class="text-muted">My Sessions</h3>
+        {% elif invitedSessions %}
+            <h3 class="text-muted">Invited Session</h3>
+        {% else %}
+            <h3 class="text-muted">No Sessions here</h3>
+        {% endif %}
+        {% if programmingSessions %}
+        <footer class="footer"></footer>
+            {% for data in programmingSessions %}
+                <span style="padding-bottom:20px; padding-top:10px; padding-right:10px; background-color:rgb(238, 238, 238)">{{ data[4] }}</span>
+                <div style="float:right">
+                    <a href="/showInviteToSession/{{ data[0] }}" style="padding-right:10px; padding-left:10px;padding-bottom:10px; padding-top:10px; border:1px solid pink">
+                        <span class="glyphicon">Invite</span>
+                    </a>
+                    <a href="/showEditSession/{{ data[0] }}" style="padding-right:10px; padding-left:10px;padding-bottom:10px; padding-top:10px; border:1px solid pink">
+                        <span class="glyphicon glyphicon-pencil">edit</span>
+                    </a>
+                    <a href="/deleteSession/{{ data[0] }}" onclick="return confirm('Are you sure you want to delete session:\n {{ data[1] }}?');" style="padding-right:10px; padding-left:10px;padding-bottom:10px; padding-top:10px; border:1px solid pink">
+                        <span class="glyphicon glyphicon-trash">delete</span>
+                    </a>
+                </div>
+                <div class="list-group" style="text-align:center">
+                  <a href="/showCode/{{ data[0] }}" class="list-group-item active">
+                    <h4 class="list-group-item-heading">{{ data[1] }}</h4>
+                    <p class="list-group-item-text">{{ data[2] }}</p>
+                  </a>
+                </div>
+            {% endfor %}
+        {% elif invitedSessions %}
+        <footer class="footer"></footer>
+            {% for invites in invitedSessions %}
+                <span style="padding-bottom:20px; padding-top:10px; padding-right:10px; background-color:rgb(238, 238, 238)">{{ invites[3] }}</span>
+                <div style="float:right">
+                    invited by {{ invites[5] }}
+                </div>
+                <div class="list-group" style="text-align:center">
+                  <a href="/showCode/{{ invites[0] }}" class="list-group-item active">
+                    <h4 class="list-group-item-heading">{{ invites[1] }}</h4>
+                    <p class="list-group-item-text">{{ invites[2] }}</p>
+                  </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <footer class="footer">
+            <p>root@localhost</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>

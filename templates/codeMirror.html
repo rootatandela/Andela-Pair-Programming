@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>APp - Home</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="../static/css/signup.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="lib/codemirror.css">
+    <script src="lib/codemirror.js"></script>
+    <script>
+      var editor = CodeMirror.fromTextArea("codeArea", {
+        lineNumbers: true
+      });
+    </script>
+
+</head>
+ 
+<body onload="init()">
+  <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class=""><a href="">{{ session['user_name'] }}</a>
+                    <li role="presentation" class="active"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">
+                    <a href="/userHome"><img src="../static/images/project_logo_28.png" alt="APp"></a>
+                    Andela Pair Programming Application
+            </h3>
+        </div>
+        <div>
+            <textarea cols="80" rows="25" name="codeArea"></textarea>
+        </div>
+</body>
+ 
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>APp - Home</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="../static/css/signup.css" rel="stylesheet">
+
+    <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+<!-- CodeMirror -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.17.0/codemirror.css" />
+
+<!-- Firepad -->
+<link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.css" />
+<script src="https://cdn.firebase.com/libs/firepad/1.4.0/firepad.min.js"></script>
+
+    <style>
+        .firepad {
+          width: 700px;
+          height: 450px;
+          background-color: #f62; /* dark orange background */
+        }
+
+        /* Note: CodeMirror applies its own styles which can be customized in the same way.
+           To apply a background to the entire editor, we need to also apply it to CodeMirror. */
+        .CodeMirror {
+          background-color:rgb(238, 238, 238)
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            vertical-align: bottom;
+        }
+        tr:hover {background-color: #f5f5f5}
+    </style>
+</head>
+ 
+<body onload="init()">
+  <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class=""><a href="">{{ session['user_name'] }}</a>
+                    <li role="presentation" class="active"><a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">
+                    <a href="/userHome"><img src="../static/images/project_logo_28.png" alt="APp"></a>
+                    Andela Pair Programming Application
+            </h3>
+            <div style="padding-top:10px">
+                <table style="cell=padding:10px">
+                    <tr>
+                        <td><strong>Session</strong></td><td>{{ programmingSession[0][1] }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Language</strong></td><td>{{ programmingSession[0][5] }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td><td>{{ programmingSession[0][2] }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+         <div id="firepad-container" style="padding-bottom:10px"></div>
+            <script>
+              function init() {
+                // Initialize Firebase.
+                // TODO: replace with your Firebase project configuration.
+                var config = {
+                  apiKey: "AIzaSyAuiFZ9OCBsQEKMTDODNiih3dnwf6lvsyI",
+                  authDomain: "andela-pair-programming-app.firebaseapp.com",
+                  databaseURL: "https://andela-pair-programming-app.firebaseio.com",
+                  storageBucket: "andela-pair-programming-app.appspot.com",
+                  messagingSenderId: "229821838496"
+                };
+                firebase.initializeApp(config);
+
+                var firepadDiv = document.getElementById('firepad');
+
+                // Get Firebase Database reference.
+                var firepadRef = firebase.database().ref();
+
+                // Create CodeMirror (with lineWrapping on).
+                var codeMirror = CodeMirror(document.getElementById('firepad-container'), { 
+                  lineWrapping: true,
+                  lineNumbers: true,
+                  mode: 'javascript' 
+                });
+
+                // Create Firepad (with rich text toolbar and shortcuts enabled).
+                var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+                  richTextShortcuts: true,
+                  richTextToolbar: true,
+                  defaultText: '// JavaScript Editing with Firepad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}'
+                });
+              }
+            </script>
+      <footer class="footer">
+            <p>root@localhost</p>
+        </footer>
+</body>
+ 
+</html>

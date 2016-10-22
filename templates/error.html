@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>APp - Oops</title>
+ 
+ 
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+ 
+ 
+</head>
+ 
+<body>
+ 
+    <div class="container">
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation" class="active"><a href="/">Home</a>
+                    </li>
+                    <li role="presentation"><a href="/showSignIn">Sign In</a>
+                    </li>
+                    <li role="presentation"><a href="/showSignUp">Sign Up</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="text-muted">
+                    <a href="/"><img src="../static/images/project_logo_28.png" alt="APp"></a>
+            </h3>
+        </div>
+ 
+        <div class="jumbotron">
+            <h3>{{error}}</h3>
+            {% if error == 'Please signin To continue' %}
+                <h3><a href="/showSignIn">Sign In</a></h3>
+            {% endif %}
+
+
+        </div>
+ 
+ 
+ 
+        <footer class="footer">
+            <p>&copy; root@localhost</p>
+        </footer>
+ 
+    </div>
+</body>
+ 
+</html>
