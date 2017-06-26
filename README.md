@@ -1,7 +1,7 @@
-# Andela-Pair-Programming
-Andela Pair Programming Bootcamp project
+# Pair-Programming-Application
+Programming Bootcamp project
 
-Andela Pair Programming is a bootcamp application that was developed to help Andelans code together collaboratively.
+Pair Programming is a bootcamp application that was developed to help Andelans code together collaboratively.
 
 It attempts to implement the features listed below
 
