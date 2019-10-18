@@ -34,6 +34,6 @@ requests==2.4.3
 uritemplate==0.6
 urllib3==1.9.1
 virtualenv==15.0.3
-Werkzeug==0.9.6
+Werkzeug==0.15.3
 Whoosh==2.6.0
 WTForms==2.0.1
